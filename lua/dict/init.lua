@@ -136,6 +136,7 @@ function M.lookup(wrd, dict)
             col = fcol,
             row = frow,
             anchor = "NW",
+            border = "single",
             style = "minimal",
             noautocmd = true,
         }
