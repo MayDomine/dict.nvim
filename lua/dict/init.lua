@@ -47,15 +47,18 @@ function M.setup(config)
     end
 end
 
-function M.lookup(wrd)
+function M.lookup(wrd, dict)
     if not wrd then
         wrd = get_cword()
         if not wrd then return end
     end
 
     local a
-    if M.opts.dict then
-        a, _ = io.popen("dict -d " .. M.opts.dict .. " '" .. wrd .. "' 2>/dev/null", "r")
+    if not dict then
+        dict = M.opts.dict
+    end
+    if dict then
+        a, _ = io.popen("dict -d " .. dict .. " '" .. wrd .. "' 2>/dev/null", "r")
     else
         a, _ = io.popen("dict '" .. wrd .. "' 2>/dev/null", "r")
     end
